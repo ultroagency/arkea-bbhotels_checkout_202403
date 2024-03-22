@@ -1,6 +1,5 @@
 import { Base } from "components/ui/Base"
 import { Container } from "components/ui/Container"
-import { Footer } from "components/ui/Footer"
 
 import { Wrapper, LogoWrapper, FullLogo, Main, Error } from "./styled"
 
@@ -15,7 +14,6 @@ export const ErrorContainer = ({ children }: { children: ChildrenType }) => {
           <Main>
             <Error>{children}</Error>
           </Main>
-          {/* <Footer /> */}
         </Wrapper>
       </Container>
     </Base>

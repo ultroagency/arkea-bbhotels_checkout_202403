@@ -13,7 +13,6 @@ import { Base } from "components/ui/Base"
 import { Button } from "components/ui/Button"
 import { CustomAddress } from "components/ui/CustomerAddressCard"
 import { FlexContainer } from "components/ui/FlexContainer"
-import { Footer } from "components/ui/Footer"
 import { Logo } from "components/ui/Logo"
 import { getTranslations } from "components/utils/payments"
 
@@ -219,7 +218,6 @@ export const StepComplete: React.FC<Props> = ({
                 </RecapCol>
               </RecapCustomer>
             </Recap>
-            {/* <Footer /> */}
           </Wrapper>
         </Bottom>
       </Base>

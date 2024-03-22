@@ -31,7 +31,6 @@ import { GTMProvider } from "components/data/GTMProvider"
 import { useActiveStep } from "components/hooks/useActiveStep"
 import { LayoutDefault } from "components/layouts/LayoutDefault"
 import { Accordion, AccordionItem } from "components/ui/Accordion"
-import { Footer } from "components/ui/Footer"
 import { Logo } from "components/ui/Logo"
 
 interface Props {
@@ -124,7 +123,6 @@ const Checkout: React.FC<Props> = ({
               <SummaryWrapper>
                 <OrderSummary appCtx={ctx} />
               </SummaryWrapper>
-              {/* <Footer /> */}
             </Sidebar>
           }
           main={
