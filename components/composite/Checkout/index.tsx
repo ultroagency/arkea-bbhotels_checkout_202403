@@ -130,6 +130,7 @@ const Checkout: React.FC<Props> = ({
               <Logo
                 logoUrl={logoUrl}
                 companyName={companyName}
+                width={85}
                 className="block md:hidden"
               />
               <MainHeader orderNumber={orderNumber} />
