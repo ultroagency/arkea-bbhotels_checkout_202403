@@ -100,8 +100,7 @@ function isNewAddress({
 
   const hasAddressIntoAddresses = Boolean(
     customerAddresses?.find(
-      (customerAddress) =>
-        customerAddress?.address?.reference === address?.reference
+      (customerAddress) => customerAddress?.id === address?.reference
     )
   )
 
@@ -267,19 +266,9 @@ export const fetchOrder = (cl: CommerceLayerClient, orderId: string) => {
         "line_items",
       ],
       shipments: ["shipping_method", "available_shipping_methods"],
-      customer: ["customer_addresses"],
+      customers: ["customer_addresses"],
       customer_addresses: ["address"],
-      line_items: [
-        "frequency",
-        // Start fields for GTM
-        "sku_code",
-        "bundle_code",
-        "name",
-        "total_amount_float",
-        "currency_code",
-        "item_type",
-        // End fields for GTM
-      ],
+      line_items: ["frequency"],
     },
     include: [
       "shipping_address",

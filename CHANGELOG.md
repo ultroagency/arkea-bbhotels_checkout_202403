@@ -1,3 +1,31 @@
+# [4.9.0](https://github.com/commercelayer/mfe-checkout/compare/v4.8.3...v4.9.0) (2024-04-05)
+
+
+### Features
+
+* override countries and states with organization config and preselect a default country ([961dc33](https://github.com/commercelayer/mfe-checkout/commit/961dc33f1eeaee7c990f8993d19a6f28c88dd044))
+
+## [4.8.3](https://github.com/commercelayer/mfe-checkout/compare/v4.8.2...v4.8.3) (2024-04-02)
+
+
+### Bug Fixes
+
+* adjust logic on step complete on page reload ([2722bda](https://github.com/commercelayer/mfe-checkout/commit/2722bda972e51ed5ce531a0b34313a0bcbd4355c))
+
+## [4.8.2](https://github.com/commercelayer/mfe-checkout/compare/v4.8.1...v4.8.2) (2024-04-02)
+
+
+### Bug Fixes
+
+* rollback `AppProvider` logic on fetching initial order ([d60ede0](https://github.com/commercelayer/mfe-checkout/commit/d60ede0dd947cd58a17cd668f953172fae1e9f70))
+
+## [4.8.1](https://github.com/commercelayer/mfe-checkout/compare/v4.8.0...v4.8.1) (2024-03-28)
+
+
+### Bug Fixes
+
+* use correct check on is new address form ([cb30d39](https://github.com/commercelayer/mfe-checkout/commit/cb30d39f57bac06d73d538522d1f6b13fee61bab))
+
 # [4.8.0](https://github.com/commercelayer/mfe-checkout/compare/v4.7.0...v4.8.0) (2024-03-20)
 
 

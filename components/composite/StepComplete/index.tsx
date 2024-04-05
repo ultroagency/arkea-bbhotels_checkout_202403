@@ -67,7 +67,7 @@ export const StepComplete: React.FC<Props> = ({
     }
   }, [thankyouPageUrl])
 
-  if (!ctx || !settings) return null
+  if (!ctx) return null
 
   const handleClick = () => {
     ctx?.returnUrl && (document.location.href = ctx?.returnUrl)
