@@ -2,6 +2,16 @@
   "framework": null,
   "rewrites": [
     {
+      "source": "/js/script.js",
+      "destination": "https://plausible.io/js/script.outbound-links.revenue.local.tagged-events.js",
+      "permanent": true
+    },
+    {
+      "source": "/api/event",
+      "destination": "https://plausible.io/api/event",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
