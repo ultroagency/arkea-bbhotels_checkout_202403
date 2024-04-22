@@ -25,6 +25,11 @@ class AppDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+          <script
+            defer
+            data-domain="checkout.arkea-bbhotels.com"
+            src="https://plausible.io/js/script.outbound-links.revenue.local.tagged-events.js"
+          ></script>
 
           {process.env[
             `NEXT_PUBLIC_NEWRELIC_LOADER_CONFIG_${process.env.NEXT_PUBLIC_STAGE}`

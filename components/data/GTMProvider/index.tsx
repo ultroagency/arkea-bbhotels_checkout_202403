@@ -1,4 +1,5 @@
 import { LineItem, Order } from "@commercelayer/sdk"
+import { usePlausible } from "next-plausible"
 import { createContext, useEffect, useContext, useRef } from "react"
 import TagManager from "react-gtm-module"
 
@@ -28,11 +29,25 @@ export const GTMProvider: React.FC<GTMProviderProps> = ({
   skipBeginCheckout,
 }) => {
   const isFirstLoading = useRef(true)
+  const plausible = usePlausible()
+  const ctx = useContext(AppContext)
+
+  useEffect(() => {
+    if (isFirstLoading.current && ctx?.order != null) {
+      isFirstLoading.current = false
+
+      plausible("BeginCheckout", {
+        revenue: {
+          currency: ctx?.order?.currency_code as string,
+          amount: ctx?.order?.total_taxable_amount_float as number,
+        },
+      })
+    }
+  })
 
   if (!gtmId) {
     return <>{children}</>
   }
-  const ctx = useContext(AppContext)
 
   if (!ctx) {
     return <>{children}</>

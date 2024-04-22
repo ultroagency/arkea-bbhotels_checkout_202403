@@ -19,6 +19,7 @@ import type {
 } from "@commercelayer/sdk"
 import classNames from "classnames"
 import { useTranslation, Trans } from "next-i18next"
+import { usePlausible } from "next-plausible"
 import { useContext, useState, useEffect } from "react"
 
 import { AccordionContext } from "components/data/AccordionProvider"
@@ -104,6 +105,7 @@ export const StepShipping: React.FC<Props> = () => {
   const accordionCtx = useContext(AccordionContext)
   const gtmCtx = useContext(GTMContext)
   const { t } = useTranslation()
+  const plausible = usePlausible()
 
   if (!appCtx || !accordionCtx) {
     return null
@@ -156,6 +158,13 @@ export const StepShipping: React.FC<Props> = () => {
     const updatedOrder = await saveShipments()
 
     setIsLocalLoader(false)
+    plausible("AddShippingInfo", {
+      revenue: {
+        currency: updatedOrder.currency_code as string,
+        amount: updatedOrder.total_amount_float as number,
+      },
+    })
+
     if (gtmCtx?.fireAddShippingInfo) {
       await gtmCtx.fireAddShippingInfo(updatedOrder)
     }

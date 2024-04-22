@@ -1,11 +1,12 @@
 // @ts-check
 
 const nextBuildId = require("next-build-id")
+const { withPlausibleProxy } = require("next-plausible")
 
 const shouldAnalyzeBundles = process.env.ANALYZE === "true"
 
 /** @type { import('next').NextConfig } */
-let nextConfig = {
+let nextConfig = withPlausibleProxy()({
   reactStrictMode: true,
   eslint: {},
   output: process.env.NODE_ENV === "production" ? "export" : "standalone",
@@ -60,7 +61,7 @@ let nextConfig = {
   // https://nextjs.org/docs/api-reference/next.config.js/custom-page-extensions#including-non-page-files-in-the-pages-directory
   pageExtensions: ["page.tsx"],
   generateBuildId: () => nextBuildId({ dir: __dirname }),
-}
+})
 
 // rewrite rules affect only development mode, since Next router will return 404 for paths that only exist in react-router
 if (process.env.NODE_ENV !== "production") {
