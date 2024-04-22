@@ -19,6 +19,7 @@ import type {
 } from "@commercelayer/sdk"
 import classNames from "classnames"
 import { useTranslation, Trans } from "next-i18next"
+import { usePlausible } from "next-plausible"
 import { useContext, useState, useEffect } from "react"
 
 import { AccordionContext } from "components/data/AccordionProvider"
@@ -47,7 +48,6 @@ import {
   ShippingLineItemQty,
   StyledShippingMethodRadioButton,
 } from "./styled"
-import { usePlausible } from "next-plausible"
 
 interface Props {
   className?: string

@@ -1,4 +1,5 @@
 import { LineItem, Order } from "@commercelayer/sdk"
+import { usePlausible } from "next-plausible"
 import { createContext, useEffect, useContext, useRef } from "react"
 import TagManager from "react-gtm-module"
 
@@ -7,7 +8,6 @@ import type { TypeAccepted } from "components/data/AppProvider/utils"
 import { LINE_ITEMS_SHOPPABLE } from "components/utils/constants"
 
 import { DataLayerItemProps, DataLayerProps } from "./typings"
-import { usePlausible } from "next-plausible"
 
 interface GTMProviderData {
   fireAddShippingInfo: (order: Order) => void

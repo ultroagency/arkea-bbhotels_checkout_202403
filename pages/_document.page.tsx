@@ -8,7 +8,6 @@ import Document, {
 import Script from "next/script"
 
 import NewRelicSnippet from "components/data/NewRelicSnippet"
-import PlausibleProvider from "next-plausible"
 
 class AppDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
