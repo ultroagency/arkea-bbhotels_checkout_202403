@@ -60,18 +60,14 @@ const StepPlaceOrder: React.FC<Props> = ({
     if (placed) {
       setIsPlacingOrder(true)
       await placeOrder(order)
-      plausible("AddPaymentInfo", {
-        revenue: {
-          currency: order?.currency_code as string,
-          amount: order?.total_amount_float as number,
-        },
-      })
-      plausible("Purchase", {
-        revenue: {
-          currency: order?.currency_code as string,
-          amount: order?.total_amount_float as number,
-        },
-      })
+
+      const revenue = {
+        currency: order?.currency_code as string,
+        amount: order?.total_amount_float as number,
+      }
+
+      plausible("AddPaymentInfo", { revenue })
+      plausible("Purchase", { revenue })
       if (gtmCtx?.firePurchase && gtmCtx?.fireAddPaymentInfo) {
         gtmCtx.fireAddPaymentInfo()
         gtmCtx.firePurchase()
