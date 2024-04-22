@@ -47,6 +47,7 @@ import {
   ShippingLineItemQty,
   StyledShippingMethodRadioButton,
 } from "./styled"
+import { usePlausible } from "next-plausible"
 
 interface Props {
   className?: string
@@ -104,6 +105,7 @@ export const StepShipping: React.FC<Props> = () => {
   const accordionCtx = useContext(AccordionContext)
   const gtmCtx = useContext(GTMContext)
   const { t } = useTranslation()
+  const plausible = usePlausible()
 
   if (!appCtx || !accordionCtx) {
     return null
@@ -156,6 +158,13 @@ export const StepShipping: React.FC<Props> = () => {
     const updatedOrder = await saveShipments()
 
     setIsLocalLoader(false)
+    plausible("AddShippingInfo", {
+      revenue: {
+        currency: updatedOrder.currency_code as string,
+        amount: updatedOrder.total_amount_float as number,
+      },
+    })
+
     if (gtmCtx?.fireAddShippingInfo) {
       await gtmCtx.fireAddShippingInfo(updatedOrder)
     }

@@ -1,4 +1,5 @@
 import type { Order } from "@commercelayer/sdk"
+import { usePlausible } from "next-plausible"
 import { useContext, useState } from "react"
 import { Trans, useTranslation } from "react-i18next"
 
@@ -41,6 +42,7 @@ const StepPlaceOrder: React.FC<Props> = ({
 
   const appCtx = useContext(AppContext)
   const gtmCtx = useContext(GTMContext)
+  const plausible = usePlausible()
 
   if (!appCtx) {
     return null
@@ -58,6 +60,12 @@ const StepPlaceOrder: React.FC<Props> = ({
     if (placed) {
       setIsPlacingOrder(true)
       await placeOrder(order)
+      plausible("AddPaymentInfo", {
+        revenue: {
+          currency: order?.currency_code as string,
+          amount: order?.total_amount_float as number,
+        },
+      })
       if (gtmCtx?.firePurchase && gtmCtx?.fireAddPaymentInfo) {
         gtmCtx.fireAddPaymentInfo()
         gtmCtx.firePurchase()

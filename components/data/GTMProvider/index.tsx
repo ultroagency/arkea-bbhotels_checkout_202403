@@ -7,6 +7,7 @@ import type { TypeAccepted } from "components/data/AppProvider/utils"
 import { LINE_ITEMS_SHOPPABLE } from "components/utils/constants"
 
 import { DataLayerItemProps, DataLayerProps } from "./typings"
+import { usePlausible } from "next-plausible"
 
 interface GTMProviderData {
   fireAddShippingInfo: (order: Order) => void
@@ -28,11 +29,25 @@ export const GTMProvider: React.FC<GTMProviderProps> = ({
   skipBeginCheckout,
 }) => {
   const isFirstLoading = useRef(true)
+  const plausible = usePlausible()
+  const ctx = useContext(AppContext)
+
+  useEffect(() => {
+    if (isFirstLoading.current && ctx?.order != null) {
+      isFirstLoading.current = false
+
+      plausible("BeginCheckout", {
+        revenue: {
+          currency: ctx?.order?.currency_code as string,
+          amount: ctx?.order?.total_taxable_amount_float as number,
+        },
+      })
+    }
+  })
 
   if (!gtmId) {
     return <>{children}</>
   }
-  const ctx = useContext(AppContext)
 
   if (!ctx) {
     return <>{children}</>
