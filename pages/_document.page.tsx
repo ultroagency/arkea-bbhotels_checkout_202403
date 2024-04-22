@@ -28,7 +28,7 @@ class AppDocument extends Document {
           <script
             defer
             data-domain="checkout.arkea-bbhotels.com"
-            src="https://plausible.io/js/script.outbound-links.revenue.local.tagged-events.js"
+            src="/js/script.js"
           ></script>
 
           {process.env[
