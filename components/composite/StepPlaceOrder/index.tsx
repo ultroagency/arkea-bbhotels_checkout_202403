@@ -66,6 +66,12 @@ const StepPlaceOrder: React.FC<Props> = ({
           amount: order?.total_amount_float as number,
         },
       })
+      plausible("Purchase", {
+        revenue: {
+          currency: order?.currency_code as string,
+          amount: order?.total_amount_float as number,
+        },
+      })
       if (gtmCtx?.firePurchase && gtmCtx?.fireAddPaymentInfo) {
         gtmCtx.fireAddPaymentInfo()
         gtmCtx.firePurchase()
