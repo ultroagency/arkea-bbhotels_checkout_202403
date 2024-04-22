@@ -3,13 +3,11 @@
   "rewrites": [
     {
       "source": "/js/script.js",
-      "destination": "https://plausible.io/js/script.outbound-links.revenue.local.tagged-events.js",
-      "permanent": true
+      "destination": "https://plausible.io/js/script.outbound-links.revenue.local.tagged-events.js"
     },
     {
       "source": "/api/event",
-      "destination": "https://plausible.io/api/event",
-      "permanent": true
+      "destination": "https://plausible.io/api/event"
     },
     {
       "source": "/(.*)",
