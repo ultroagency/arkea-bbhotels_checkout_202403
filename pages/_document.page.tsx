@@ -27,7 +27,7 @@ class AppDocument extends Document {
           <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
           <script
             defer
-            data-domain="checkout.arkea-bbhotels.com"
+            data-domain="arkea-bbhotels.com"
             src="/js/script.js"
           ></script>
 
