@@ -11,7 +11,12 @@ export const CheckoutHead: React.FC<Props> = (props) => {
 
   return (
     <Head>
-      <title>{t("general.title", { companyName: props.title })}</title>
+      <title>
+        {t("general.title", {
+          companyName: props.title,
+          interpolation: { escapeValue: false },
+        })}
+      </title>
       <link rel="icon" type="image/x-icon" href={props.favicon} />
     </Head>
   )
